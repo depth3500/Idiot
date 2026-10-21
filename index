@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fancy Typography UI</title>
+<!-- Import Elegant Serif / Fancy Fonts from Google Fonts -->
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+/* Base Page Styling /
+body {
+margin: 0;
+padding: 0;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+font-family: 'Playfair Display', serif;
+overflow: hidden;
+}
+/* Trigger Button Styling /
+.trigger-btn {
+padding: 15px 40px;
+font-size: 1.2rem;
+font-weight: bold;
+color: #ffffff;
+background: rgba(255, 255, 255, 0.1);
+border: 2px solid rgba(255, 255, 255, 0.5);
+border-radius: 30px;
+cursor: pointer;
+backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+.trigger-btn:hover {
+background: #ffffff;
+color: #0f2027;
+border-color: #ffffff;
+transform: translateY(-3px);
+box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+}
+.trigger-btn:active {
+transform: translateY(-1px);
+}
+/* Dynamic Overlay Containers /
+.popup-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+pointer-events: none; /* Allows interacting with background if necessary /
+z-index: 9999;
+}
+/* Complex Animated Typography Text /
+.fancy-text {
+font-family: 'Cinzel Decorative', serif;
+font-size: 5rem;
+color: #ffdf00; /* Gold hue /
+text-align: center;
+text-shadow: 0 0 10px rgba(255, 223, 0, 0.5),
+0 0 20px rgba(255, 223, 0, 0.3),
+0 0 30px rgba(255, 69, 0, 0.5);
+/* Tie CSS animations together: Scale, drift upwards, and fade out smoothly /
+animation:
+fancyEntrance 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+fancyDrift 3.5s ease-in-out infinite alternate,
+fancyFadeOut 0.5s ease-in 3s forwards;
+will-change: transform, opacity;
+}
+/* Responsive scaling for smaller viewports /
+@media (max-width: 768px) {
+.fancy-text {
+font-size: 2.5rem;
+}
+}
+/* Keyframes for complex UI behaviors /
+@keyframes fancyEntrance {
+0% {
+transform: scale(0.3) rotate(-10deg);
+opacity: 0;
+filter: blur(10px);
+}
+100% {
+transform: scale(1) rotate(0deg);
+opacity: 1;
+filter: blur(0);
+}
+}
+@keyframes fancyDrift {
+0% {
+transform: translateY(0) scale(1);
+}
+100% {
+transform: translateY(-20px) scale(1.03);
+}
+}
+@keyframes fancyFadeOut {
+0% {
+opacity: 1;
+filter: blur(0);
+transform: translateY(-20px) scale(1.03);
+}
+100% {
+opacity: 0;
+filter: blur(15px);
+transform: translateY(-50px) scale(0.9);
+}
+}
+</style>
+</head>
+<body>
+<!-- Main Controller Trigger Button -->
+<button class="trigger-btn" id="magicButton">Click Me</button>
+<script>
+document.getElementById('magicButton').addEventListener('click', function() {
+// 1. Prevent duplicate overlays if clicked rapidly
+if (document.querySelector('.popup-overlay')) return;
+// 2. Programmatically create structure elements
+const overlay = document.createElement('div');
+overlay.className = 'popup-overlay';
+const textNode = document.createElement('h1');
+textNode.className = 'fancy-text';
+textNode.innerText = 'YOU ARE AN IDIOT';
+// 3. Assemble and inject components into live DOM hierarchy
+overlay.appendChild(textNode);
+document.body.appendChild(overlay);
+// 4. Safely clean up and destroy DOM references after animation expires (3.5s duration)
+setTimeout(() => {
+overlay.remove();
+}, 3500);
+});
+</script>
+</body>
+</html>
